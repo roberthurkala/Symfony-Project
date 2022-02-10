@@ -1,0 +1,45 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="container-fluid">
+            <div class="title-wrapper pt-30">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="titlemb-30">
+                            <h2>Dashboard</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="breadcrumb-wrapper mb-30">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ path('panel_dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Informacje
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" card-style mb-30">
+                            <p>
+                                TODO: dodać informacje o wersji o nowościach instrukacja itd.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

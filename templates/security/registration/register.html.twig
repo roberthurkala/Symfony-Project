@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <section class="signin-section">
+        <div class="container-fluid">
+            <div class="title-wrapper pt-30">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="title mb-30">
+                            <h2>Zarejestruj się</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="breadcrumb-wrapper mb-30">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#0">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="#0">Autoryzacja</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Rejestracja
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-0 auth-row">
+                <div class="col-lg-6">
+                    <div class="auth-cover-wrapper bg-primary-100">
+                        <div class="auth-cover">
+                            <div class="title text-center">
+                                <h1 class="text-primary mb-10">Zacznij</h1>
+                                <p class="text-medium">
+                                    tworzyć z
+                                    <br class="d-sm-block">
+                                    naszym systemem.
+                                </p>
+                            </div>
+                            <div class="cover-image">
+                                <img src="{{ asset('assets/images/signin-image.svg') }}" alt="">
+                            </div>
+                            <div class="shape-image">
+                                <img src="{{ asset('assets/images/shape.svg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="signup-wrapper">
+                        <div class="form-wrapper">
+                            <h6 class="mb-15">Formularz rejestracji</h6>
+                            <p class="text-sm mb-25">
+                                Uzupełnij formularz i wejdź do naszego systemu.
+                            </p>
+                            {% for flashError in app.flashes('verify_email_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                            {% endfor %}
+                            {{ form_start(registrationForm) }}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        {{ form_row(registrationForm.email) }}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-style-1">
+                                        {{ form_row(registrationForm.plainPassword, {
+                                            label: 'Password'
+                                        }) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="button-group d-flex justify-content-center flex-wrap">
+                                        <button class="main-btn primary-btn btn-hover w-100 text-center">
+                                            Zarejestruj
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

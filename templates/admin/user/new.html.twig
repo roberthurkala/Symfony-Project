@@ -1,0 +1,48 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Nowy użytkownik{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="container-fluid">
+            <div class="title-wrapper pt-30">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="title d-flex align-items-center flex-wrap mb-30">
+                            <h2 class="mr-40">Nowy użytkownik</h2>
+                            <a href="{{ path('admin_user_index') }}" class="main-btn primary-btn btn-hover btn-sm">
+                                <i class="lni lni-reply"></i> Powrót</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="breadcrumb-wrapper mb-30">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ path('panel_dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ path('admin_user_index') }}">Lista użytkowników</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Nowy użytkownik
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-style mb-30">
+                            {{ include('admin/user/_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

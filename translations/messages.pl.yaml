@@ -1,0 +1,12 @@
+user:
+  field:
+    enabled: Aktywny
+    email: Email
+    roles: Role
+    password: Hasło
+    rpassword: Powtórz hasło
+    first_name: Imię
+    last_name: Nazwisko
+  role:
+    role_admin: Administrator
+    role_user: Użytkownik

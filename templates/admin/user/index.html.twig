@@ -1,0 +1,86 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Lista użytkowników{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="container-fluid">
+            <div class="title-wrapper pt-30">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="title d-flex align-items-center flex-wrap mb-30">
+                            <h2 class="mr-40">Lista użytkowników</h2>
+                            <a href="{{ path('admin_user_new') }}" class="main-btn primary-btn btn-hover btn-sm">
+                                <i class="lni lni-plus mr-5"></i> Nowy użytkownik</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="breadcrumb-wrapper mb-30">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ path('panel_dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Lista użytkowników
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-wrapper">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-style mb-30">
+                            <div class="table-wrapper table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Email</th>
+                                        <th>Roles</th>
+                                        <th>actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.id }}</td>
+                                            <td class="min-width">
+                                                <p>{{ user.email }}</p>
+                                            </td>
+                                            <td class="min-width">
+                                                <p>{{ user.roles ? user.roles|json_encode : '' }}</p>
+                                            </td>
+                                            <td>
+                                                <div class="action">
+                                                    <a class="text-primary mr-5"
+                                                       href="{{ path('admin_user_show', {'id': user.id}) }}">
+                                                        <i class="lni lni-eye"></i> Podgląd
+                                                    </a>
+
+                                                    <a class="text-success"
+                                                       href="{{ path('admin_user_edit', {'id': user.id}) }}">
+                                                        <i class="lni lni-pencil"></i> Edytuj
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="4">Nie znaleziono wierszy</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body>
+    {% if app.user %}
+        <aside class="sidebar-nav-wrapper">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item">
+                        <a href="{{ path('panel_dashboard') }}">
+                              <span class="icon">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9.16667 19.25H12.8333C12.8333 20.2584 12.0083 21.0834 11 21.0834C9.99167 21.0834 9.16667 20.2584 9.16667 19.25ZM19.25 17.4167V18.3334H2.75V17.4167L4.58333 15.5834V10.0834C4.58333 7.24171 6.41667 4.76671 9.16667 3.94171V3.66671C9.16667 2.65837 9.99167 1.83337 11 1.83337C12.0083 1.83337 12.8333 2.65837 12.8333 3.66671V3.94171C15.5833 4.76671 17.4167 7.24171 17.4167 10.0834V15.5834L19.25 17.4167ZM15.5833 10.0834C15.5833 7.51671 13.5667 5.50004 11 5.50004C8.43333 5.50004 6.41667 7.51671 6.41667 10.0834V16.5H15.5833V10.0834Z"></path>
+                                </svg>
+                              </span>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-item-has-children">
+                        <a href="#0" class="" data-bs-toggle="collapse" data-bs-target="#ddmenu_3"
+                           aria-controls="ddmenu_3" aria-expanded="true" aria-label="Toggle navigation">
+                              <span class="icon">
+                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M12.9067 14.2908L15.2808 11.9167H6.41667V10.0833H15.2808L12.9067 7.70917L14.2083 6.41667L18.7917 11L14.2083 15.5833L12.9067 14.2908ZM17.4167 2.75C17.9029 2.75 18.3692 2.94315 18.713 3.28697C19.0568 3.63079 19.25 4.0971 19.25 4.58333V8.86417L17.4167 7.03083V4.58333H4.58333V17.4167H17.4167V14.9692L19.25 13.1358V17.4167C19.25 17.9029 19.0568 18.3692 18.713 18.713C18.3692 19.0568 17.9029 19.25 17.4167 19.25H4.58333C3.56583 19.25 2.75 18.425 2.75 17.4167V4.58333C2.75 3.56583 3.56583 2.75 4.58333 2.75H17.4167Z"></path>
+                                </svg>
+                              </span>
+                            <span class="text">Użytkownicy</span>
+                        </a>
+                        <ul id="ddmenu_3" class="dropdown-nav collapse show" style="">
+                            <li>
+                                <a href="{{ path('admin_user_index') }}"> Lista użytkowników</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_user_new') }}"> Nowy użytkownik</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    {% endif %}
+    <div class="overlay"></div>
+    <main class="main-wrapper">
+        <header class="header">
+            {% if app.user %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-6">
+                            <div class="header-left d-flex align-items-center">
+                                <div class="menu-toggle-btn mr-20">
+                                    <button id="menu-toggle" class="main-btn primary-btn btn-hover">
+                                        <i class="lni lni-chevron-left me-2"></i> Menu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-6">
+                            <div class="header-right">
+                                <div class="profile-box ml-15">
+                                    <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div class="profile-info">
+                                            <div class="info">
+                                                <h6>{{ app.user.userIdentifier }}</h6>
+                                            </div>
+                                        </div>
+                                        <i class="lni lni-chevron-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
+                                        <li>
+                                            <a href="#0">
+                                                <i class="lni lni-user"></i> Zobacz profil
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('app_logout') }}"> <i class="lni lni-exit"></i> Wyloguj</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </header>
+
+        {% block content %}{% endblock %}
+
+        {% include '_footer.html.twig' %}
+    </main>
+    </body>
+{% endblock %}

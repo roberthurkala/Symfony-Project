@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logowanie{% endblock %}
+
+{% block body %}
+    <body>
+    <main class="main-wrapper-login">
+        <section class="signin-section">
+            <div class="container-fluid">
+                <div class="title-wrapper pt-30">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="title mb-30">
+                                <h2>Logowanie</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="breadcrumb-wrapper mb-30">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="#0">Dashboard</a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="#0">Autoryzacja</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            Logowanie
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-0 auth-row">
+                    <div class="col-lg-6">
+                        <div class="auth-cover-wrapper bg-primary-100">
+                            <div class="auth-cover">
+                                <div class="title text-center">
+                                    <h1 class="text-primary mb-10">Dzień dobry!</h1>
+                                    <p class="text-medium">
+                                        Zaloguj się na swoje istniejące konto, aby kontynuować
+                                    </p>
+                                </div>
+                                <div class="cover-image">
+                                    <img src="{{ asset('assets/images/signin-image.svg') }}" alt=""/>
+                                </div>
+                                <div class="shape-image">
+                                    <img src="{{ asset('assets/images/shape.svg') }}" alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="signin-wrapper">
+                            <div class="form-wrapper">
+                                <h6 class="mb-15">Formularz logowania</h6>
+                                <p class="text-sm mb-25">
+                                    Zacznij korzystać z naszego systemu!
+                                </p>
+                                {% if error %}
+                                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                                <form action="{{ path('app_login') }}" method="post">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="input-style-1">
+                                                <label for="username">Email:</label>
+                                                <input type="text" id="username" name="_username"
+                                                       value="{{ last_username }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="input-style-1">
+                                                <label for="password">Password:</label>
+                                                <input type="password" id="password" name="_password"/>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="_csrf_token"
+                                               value="{{ csrf_token('authenticate') }}">
+                                        <div class="col-xxl-12 col-lg-12 col-md-12">
+                                            <div class="text-start text-md-end text-lg-start text-xxl-end mb-30">
+                                                <a href="#0" class="hover-underline">Zapomniałeś hasła?</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="button-group d-flex justify-content-center flex-wrap">
+                                                <button type="submit"
+                                                        class="main-btn primary-btn btn-hover w-100 text-center">
+                                                    Zaloguj
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="singin-option pt-40">
+                                    <p class="text-sm text-medium text-dark text-center">
+                                        <a href="{{ path('app_register') }}">Nie masz konta?</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% include '_footer.html.twig' %}
+    </main>
+
+    </body>
+{% endblock %}
